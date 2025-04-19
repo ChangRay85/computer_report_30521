@@ -138,11 +138,11 @@ for i, column in enumerate(st.columns([2.11, 0.46, 0.43])):
             total = len(st.session_state["experients"])
             st.markdown(f"##### legal/total: {legal}/{total}")
         if i == 1:
-            if st.button("新增一組"):
+            if st.button("新增一組", key=f"plus_1_{i_objects}"):
                 st.session_state["experients"].append({"object": Objects(), "p_q_f": objects_to_p_q_f(get_p_q_f, Objects())})
                 st.rerun()
         if i == 2:
-            if st.button("全部刪除"):
+            if st.button("全部刪除", key=f"delete_{i_objects}"):
                 st.session_state["experients"] = []
                 st.rerun()
 
