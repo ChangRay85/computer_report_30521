@@ -138,11 +138,11 @@ for i, column in enumerate(st.columns([2.11, 0.46, 0.43])):
             total = len(st.session_state["experients"])
             st.markdown(f"##### legal/total: {legal}/{total}")
         if i == 1:
-            if st.button("新增一組", key=f"plus_1_{i_objects}"):
+            if st.button("新增一組"):
                 st.session_state["experients"].append({"object": Objects(), "p_q_f": objects_to_p_q_f(get_p_q_f, Objects())})
                 st.rerun()
         if i == 2:
-            if st.button("全部刪除", key=f"delete_{i_objects}"):
+            if st.button("全部刪除"):
                 st.session_state["experients"] = []
                 st.rerun()
 
@@ -188,11 +188,11 @@ for i_objects, (objects_key, p_q_f_key) in enumerate(st.session_state["experient
                 else:
                     st.markdown(f"##### f = {p_q_f['f']:.4f}")
             if i == 3:
-                if st.button(f"複製第{i_objects+1}組"):
+                if st.button(f"複製第{i_objects+1}組", key=f"copy_{i_objects}"):
                     st.session_state["experients"].insert(i_objects, copy.deepcopy(st.session_state["experients"][i_objects]))
                     st.rerun()
             if i == 4:
-                if st.button(f"刪除第{i_objects+1}組"):
+                if st.button(f"刪除第{i_objects+1}組", key=f"delete_{i_objects}"):
                     del st.session_state["experients"][i_objects]
                     st.rerun()
     stp.layout2(3)
